@@ -1,6 +1,6 @@
 <?php
 
-require_once 'model/dock/dockManager.php'; // Update the path to your DockManager file
+require_once 'model/dock/DockManager.php'; // Update the path to your DockManager file
 
 class InitialDockListViewController {
     public function displayInitialDockListView() {
