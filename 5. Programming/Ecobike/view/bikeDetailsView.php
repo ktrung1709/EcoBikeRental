@@ -125,6 +125,28 @@
             height: 60px;
             width: 100%;
         }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .custom-button {
+            background-color: #99CCFF;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 30px;
+            margin-left: 580px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -164,6 +186,7 @@
         <button id="actionButton">RENT NOW</button>
 
     </div>
+    <button class="custom-button" style="align-items: center;"><a href="index.php">Go home page</a></button>
 </body>
 
 </html>
