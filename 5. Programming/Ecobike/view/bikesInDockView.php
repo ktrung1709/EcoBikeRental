@@ -187,11 +187,23 @@
             </div>
         </div>
     </div>
-    <!-- <?php foreach ($bikeList as $bike) : ?>
-        <li><a href="requestHandler.php?request=bikeDetails&bikeId=<?php echo $bike->getId(); ?>">
-                <?php echo $bike->getId(); ?></a></li>
-    <?php endforeach; ?> -->
-    
+    <?php foreach ($bikeList as $bike) : ?>
+        <!-- <li><a href="requestHandler.php?request=bikeDetails&bikeId=<?php echo $bike->getId(); ?>">
+                <?php echo $bike->getId(); ?></a></li> -->
+        <div class="list-bike">
+            <div class="list-bike-detail">
+                <div class="image-container">
+                    <img class="image" src="<?php echo $bike->getImageURL(); ?>" alt="Bike Image">
+                </div>
+                <p class="text"> Code: <?php echo $bike->getId(); ?> </p>
+                <p class="text"><?php echo $bike->getBikeType(); ?></p>
+                <button class="custom-button"><a href="requestHandler.php?request=bikeDetails&bikeId=<?php echo $bike->getId(); ?>">View detail</a></button>
+                <!-- <button class="button">RENT BIKE</button> -->
+                <!-- Other elements are omitted for brevity -->
+            </div>
+        </div>
+    <?php endforeach; ?>
+
 </body>
 
 </html>
