@@ -206,37 +206,35 @@
                 </div>
                
                 <?php 
-                    foreach ($dockList as $dock) {
-                    
-                    echo '
-                         <div class="section">
-                            <div id="dockPane" onclick="dockImgClickListener()">
-                                 <img class="dockImg" src="dockImg1.png" alt="Dock Image">
-                                <div id="content">
-                        <div class="section">
-                           <div class="dock-title"><a href="requestHandler.php?request=bikesInDock&dockId=<?php echo $dock->getId(); ?>" >' . $dock->getName() . '</a></div>
+foreach ($dockList as $dock) {
+    echo '
+        <div class="section">
+            <div id="dockPane" onclick="dockImgClickListener()">
+                <img class="dockImg" src="dockImg1.png" alt="Dock Image">
+                <div id="content">
+                    <div class="section">
+                        <div class="dock-title"><a href="requestHandler.php?request=bikesInDock&dockId=' . $dock->getId() . '">' . $dock->getName() . '</a></div>
+                    </div>
+                    <div class="section">
+                        <div class="info">
+                            <span>Address:</span>
+                            <span id="dockAddress"><a href="requestHandler.php?request=bikesInDock&dockId=' . $dock->getId() . '">' . $dock->getLocation() . '</a></span>
                         </div>
-                        <div class="section">
-                           <div class="info">
-                              <span>Address:</span>
-                              <span id="dockAddress"><a href="requestHandler.php?request=bikesInDock&dockId=<?php echo $dock->getId(); ?>" >' . $dock->getLocation() . '</a></span>
-                           </div>
+                    </div>
+                    <div class="section">
+                        <div class="info">
+                            <span>Bike Number:</span>
+                            <span id="dockBikeNum">100/200</span>
                         </div>
-                        <div class="section">
-                           <div class="info">
-                              <span>Bike Number:</span>
-                              <span id="dockBikeNum">100/200</span>
-                           </div>
-                        </div>
-                        <div>
-                            <button class="custom-button"><a href="requestHandler.php?request=bikesInDock&dockId=<?php echo $dock->getId(); ?>" >View detail</a></button>
-                        </div>
-                     </div>
-                  </div>
+                    </div>
+                    <div>
+                        <button class="custom-button"><a href="requestHandler.php?request=bikesInDock&dockId=' . $dock->getId() . '">View detail</a></button>
+                    </div>
                 </div>
-                    ';
-                }
-                ?>
+            </div>
+        </div>';
+}
+?>
 
             </div>
         </div>
