@@ -59,7 +59,7 @@ class DockManager {
      * @return instance of that Dock, null if id not found
      */
     public function getDockById($id) {
-		echo "1";
+		// echo "1";
         foreach ($this->dockList as $dock) {
             if ($dock->getId() == $id)
                 return $dock;

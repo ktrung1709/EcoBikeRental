@@ -210,7 +210,7 @@ foreach ($dockList as $dock) {
     echo '
         <div class="section">
             <div id="dockPane" onclick="dockImgClickListener()">
-                <img class="dockImg" src="dockImg1.png" alt="Dock Image">
+                <img class="dockImg" src="' . $dock->getImageURL() . '" alt="Dock Image">
                 <div id="content">
                     <div class="section">
                         <div class="dock-title"><a href="requestHandler.php?request=bikesInDock&dockId=' . $dock->getId() . '">' . $dock->getName() . '</a></div>
