@@ -29,7 +29,7 @@ class DockManager {
      */
     public function refreshDockList() {
         $this->dockList = array();
-        echo "refreshing";
+        // echo "refreshing";
 
         // Query for all Docks
         $SQL = "SELECT * FROM dock ORDER BY dock.name";

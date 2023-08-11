@@ -31,7 +31,7 @@ class EBRDB {
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
                 ];
                 self::$conn = new PDO(self::$url, self::$user, self::$password, $options);
-                echo "Connected to the PostgreSQL server successfully.";
+                // echo "Connected to the PostgreSQL server successfully.";
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
