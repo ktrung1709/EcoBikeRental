@@ -14,7 +14,7 @@ class StandardBike extends Bike {
         $this->pairOfPedals = 1;
         $this->value = $value;
         $this->deposit = $value / 10;
-        $this->feeCalculator = new RentingFeeForStandardBikeCalculator();
+        // $this->feeCalculator = new RentingFeeForStandardBikeCalculator();
     }
 
     public function getBikeType() {

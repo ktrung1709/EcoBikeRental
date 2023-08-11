@@ -142,7 +142,5 @@ class Bike {
     }
 }
 
-$bike = new Bike(123456, 100, 10000);
-$bike->setId("bike-123");
-$bike->setImageURL("path/to/image.jpg");
+
 

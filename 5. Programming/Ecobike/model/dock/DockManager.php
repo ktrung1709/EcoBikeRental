@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Dock.php';
+require_once 'model/dock/Dock.php';
 require_once 'model/db/EBRDB.php';
 class DockManager {
 
@@ -59,8 +59,9 @@ class DockManager {
      * @return instance of that Dock, null if id not found
      */
     public function getDockById($id) {
+		echo "1";
         foreach ($this->dockList as $dock) {
-            if ($dock->getId() === $id)
+            if ($dock->getId() == $id)
                 return $dock;
         }
         return null;

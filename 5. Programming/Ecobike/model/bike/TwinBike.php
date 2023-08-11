@@ -12,7 +12,7 @@ class TwinBike extends StandardBike {
         $this->rearSeat = 1;
         $this->pairOfPedals = 2;
         $this->deposit = $value / 10;
-        $this->feeCalculator = new RentingFeeForTwinBikeCalculator();
+        // $this->feeCalculator = new RentingFeeForTwinBikeCalculator();
     }
 
     public function getBikeType() {

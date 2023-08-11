@@ -14,7 +14,7 @@ class BikeManager {
     const STANDARD_ELECTRICAL_BIKE_CODE = 3;
     const TWIN_ELECTRICAL_BIKE_CODE = 4;
 
-    private function __construct() {
+    public function __construct() {
         $this->refreshBikeList();
     }
 
@@ -183,7 +183,7 @@ class BikeManager {
 
     public function getBikeById($id) {
         foreach ($this->bikeList as $bike) {
-            if ($bike->getId() === $id) {
+            if ($bike->getId() == $id) {
                 return $bike;
             }
         }

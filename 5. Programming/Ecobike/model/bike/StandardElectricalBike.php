@@ -19,7 +19,7 @@ class StandardElectricalBike extends Bike {
         $this->deposit = $value / 10;
         $this->battery = 100;
         $this->timeLeft = 360;
-        $this->feeCalculator = new RentingFeeForEBikeCalculator();
+        // $this->feeCalculator = new RentingFeeForEBikeCalculator();
     }
 
     public function getBattery() { return $this->battery; }

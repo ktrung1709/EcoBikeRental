@@ -13,7 +13,7 @@ class TwinElectricalBike extends StandardElectricalBike {
         $this->deposit = $value / 10;
         $this->battery = 100;
         $this->timeLeft = 360;
-        $this->feeCalculator = new RentingFeeForTwinEBikeCalculator();
+        // $this->feeCalculator = new RentingFeeForTwinEBikeCalculator();
     }
 
     public function getBikeType() {

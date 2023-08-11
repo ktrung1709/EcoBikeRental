@@ -15,7 +15,7 @@
         $dock = $dockManager->getDockById($dockId);
         if ($dock) {
             echo '<h1>Bikes in ' . $dock->getName() . '</h1>';
-            $bikeList = $bikeManager->getBikesByDockId($dockId);
+            $bikeList = $bikeManager->getBikeListInDock($dockId);
 
             if (count($bikeList) > 0) {
                 echo '<ul>';
