@@ -172,11 +172,11 @@
                     <!-- <span id="bikeUsage" class="info-text">6 HOURS REMAINING</span> -->
                 </div>
                 <div id="bikeComponents">
-                    <img id="saddleIcon" src="saddle_icon.png" alt="Saddle Icon">
+                    <img id="saddleIcon" src="view/icons/saddle_icon.png" alt="Saddle Icon">
                     <span id="componentNumber"><?php echo $bike->getSaddle(); ?></span>
-                    <img id="pedalsIcon" src="icons/pedals_icon.png" alt="Pedals Icon">
+                    <img id="pedalsIcon" src="view/icons/pedals_icon.png" alt="Pedals Icon">
                     <span id="componentNumber"><?php echo $bike->getPairOfPedals(); ?></span>
-                    <img id="rearSeatIcon" src="icons/rear_seat_icon.png" alt="Rear Seat Icon">
+                    <img id="rearSeatIcon" src="view/icons/rear_seat_icon.png" alt="Rear Seat Icon">
                     <span id="componentNumber"><?php echo $bike->getRearSeat(); ?></span>
                     <!-- <img id="batteryIcon" src="icons/battery_icon.png" alt="Battery Icon">
                     <span id="componentNumber">75%</span> -->
