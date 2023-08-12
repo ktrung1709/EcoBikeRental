@@ -60,7 +60,7 @@
         }
 
         .highlight-text {
-            color: #8c36c0;
+            color: #6699CC;
             font-family: "Arial Bold Italic";
         }
 
@@ -104,7 +104,7 @@
 
         #actionButton {
             /* margin-top: 20px; */
-            background-color: #8c36c0;
+            background-color: #6666FF;
             border-radius: 6px;
             cursor: pointer;
             font-family: "Arial Bold";
@@ -133,7 +133,7 @@
         }
 
         .custom-button {
-            background-color: #99CCFF;
+            background-color: #CC99CC;
             border: none;
             color: black;
             padding: 10px 20px;
@@ -159,9 +159,9 @@
     <p>Dock ID: <?php echo $bike->getDockId(); ?></p> -->
     <!-- Display other bike details here -->
     <!-- <div id="navbar"></div> -->
-    <div style="position: relative; background-color: #8C36C0; height: 60px; width: 1366px;">
+    <div style="position: relative; background-color: #6699CC; height: 60px; width: 1366px;">
         <img id="logo" src="view/image/LOGO.png" alt="Logo" style="position: absolute; top: 0; left: 0; cursor: hand; width: 176px; height: 60px;">
-        
+
     </div>
     <div id="container">
         <div id="bikeInfoPane">

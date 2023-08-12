@@ -134,7 +134,7 @@
         }
 
         .text {
-            color: #8c36c0;
+            color: #6699CC;
             position: relative;
             left: 1px;
             /* top: 228px; */
@@ -152,7 +152,7 @@
             height: 44px;
             width: 115px;
             border: none;
-            background-color: #CC99FF;
+            background-color: #6699CC;
             color: white;
             border-radius: 5px;
             cursor: pointer;
@@ -198,7 +198,7 @@
         }
 
         .custom-button {
-            background-color: #99CCFF;
+            background-color: #CC99CC;
             border: none;
             color: black;
             padding: 10px 20px;
@@ -217,7 +217,7 @@
 </head>
 
 <body>
-    <div style="position: relative; background-color: #8C36C0; height: 60px; width: 1366px;">
+    <div style="position: relative; background-color: #6699CC; height: 60px; width: 1366px;">
         <img id="logo" src="view/image/LOGO.png" alt="Logo" style="position: absolute; top: 0; left: 0; cursor: hand; width: 176px; height: 60px;">
 
     </div>
