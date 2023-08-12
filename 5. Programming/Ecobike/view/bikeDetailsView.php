@@ -8,6 +8,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            overflow-x: hidden;
         }
 
         #container {
@@ -157,7 +158,11 @@
     <p>Type: <?php echo $bike->getBikeType(); ?></p>
     <p>Dock ID: <?php echo $bike->getDockId(); ?></p> -->
     <!-- Display other bike details here -->
-    <div id="navbar"></div>
+    <!-- <div id="navbar"></div> -->
+    <div style="position: relative; background-color: #8C36C0; height: 60px; width: 1366px;">
+        <img id="logo" src="image/LOGO.png" alt="Logo" style="position: absolute; top: 0; left: 0; cursor: hand; width: 176px; height: 60px;">
+        
+    </div>
     <div id="container">
         <div id="bikeInfoPane">
             <!-- <img id="bikeImage" src="" alt="Bike Image"> -->
@@ -172,7 +177,7 @@
                     <!-- <span id="bikeUsage" class="info-text">6 HOURS REMAINING</span> -->
                 </div>
                 <div id="bikeComponents">
-                    <img id="saddleIcon" src="saddle_icon.png" alt="Saddle Icon">
+                    <img id="saddleIcon" src="icons/saddle_icon.png" alt="Saddle Icon">
                     <span id="componentNumber"><?php echo $bike->getSaddle(); ?></span>
                     <img id="pedalsIcon" src="icons/pedals_icon.png" alt="Pedals Icon">
                     <span id="componentNumber"><?php echo $bike->getPairOfPedals(); ?></span>

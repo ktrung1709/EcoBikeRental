@@ -8,7 +8,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            /* overflow-x: hidden; */
+            overflow-x: hidden;
         }
 
         a {
@@ -148,15 +148,42 @@
             text-align: center;
             position: relative;
             left: 93px;
-            /* top: 280px; */
+            /* top: 280px;  */
             height: 44px;
             width: 115px;
+            border: none;
             background-color: #CC99FF;
             color: white;
+            border-radius: 5px;
+            cursor: pointer;
             font-family: Arial;
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 10px;
+        }
+
+        /* .button {
+            text-align: center;
+            position: relative;
+            background-color: #CC99FF;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            /* margin-top: 30px;
+            margin-left: 20px; *
+        } */
+
+        .button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .button:focus {
+            outline: none;
         }
 
         .list-bike {
@@ -190,8 +217,9 @@
 </head>
 
 <body>
-    <div>
-        <div id="navbar"></div>
+    <div style="position: relative; background-color: #8C36C0; height: 60px; width: 1366px;">
+        <img id="logo" src="image/LOGO.png" alt="Logo" style="position: absolute; top: 0; left: 0; cursor: hand; width: 176px; height: 60px;">
+
     </div>
     <br>
     <!-- <h1>Bikes In Dock View</h1> -->

@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            overflow-x: hidden;
         }
 
         a {
@@ -194,7 +195,10 @@
 
     <!-- ------------------------------------------ -->
     <div id="container">
-        <div id="navbar"></div>
+        <div style="position: relative; background-color: #8C36C0; height: 60px; width: 1366px;">
+            <img id="logo" src="image/LOGO.png" alt="Logo" style="position: absolute; top: 0; left: 0; cursor: hand; width: 176px; height: 60px;">
+            
+        </div>
         <div id="scrollPane">
             <div id="content">
 
@@ -204,10 +208,10 @@
                     <button class="custom-button">Search</button>
 
                 </div>
-               
-                <?php 
-foreach ($dockList as $dock) {
-    echo '
+
+                <?php
+                foreach ($dockList as $dock) {
+                    echo '
         <div class="section">
             <div id="dockPane" onclick="dockImgClickListener()">
                 <img class="dockImg" src="' . $dock->getImageURL() . '" alt="Dock Image">
@@ -233,8 +237,8 @@ foreach ($dockList as $dock) {
                 </div>
             </div>
         </div>';
-}
-?>
+                }
+                ?>
 
             </div>
         </div>
