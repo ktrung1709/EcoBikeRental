@@ -160,7 +160,7 @@
     <!-- Display other bike details here -->
     <!-- <div id="navbar"></div> -->
     <div style="position: relative; background-color: #8C36C0; height: 60px; width: 1366px;">
-        <img id="logo" src="image/LOGO.png" alt="Logo" style="position: absolute; top: 0; left: 0; cursor: hand; width: 176px; height: 60px;">
+        <img id="logo" src="view/image/LOGO.png" alt="Logo" style="position: absolute; top: 0; left: 0; cursor: hand; width: 176px; height: 60px;">
         
     </div>
     <div id="container">
