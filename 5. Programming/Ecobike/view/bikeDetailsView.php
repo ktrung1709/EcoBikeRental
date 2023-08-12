@@ -190,7 +190,7 @@
                 </div>
             </div>
         </div>
-        <button id="actionButton">RENT NOW</button>
+        <button id="actionButton"><a href="requestHandler.php?request=paymentMethod">RENT NOW</a></button>
 
     </div>
     <button class="custom-button" style="align-items: center;"><a href="index.php">Go home page</a></button>
