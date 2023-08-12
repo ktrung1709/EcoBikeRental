@@ -19,7 +19,7 @@ if ($request === 'bikesInDock') {
     $bikeDetailsViewController = new BikeDetailsViewController();
     $bikeDetailsViewController->displayBikeDetailsView($bikeId);
 } elseif ($request === 'paymentMethod') {
-    $bikeId = $_GET['bikeId'];
+    // $bikeId = $_GET['bikeId'];
     $paymentMethodViewController = new PaymentMethodViewController();
     $paymentMethodViewController->displayPaymentMethodView($bikeId);
 } elseif ($request === 'processPayment') {
