@@ -5,7 +5,7 @@
 class PaymentTransaction {
 
     private $errorCode;
-    private $card;
+    private  CreditCard $card;
     private $transactionId;
     private $transactionContent;
     private $amount;
@@ -14,16 +14,15 @@ class PaymentTransaction {
     private $type;
     private $method;
     
-    public function __construct($errorCode, $card, $transactionId, $transactionContent, $amount, $createdAt) {
-        $this->errorCode = $errorCode;
+    public function __construct( $card,$type,$method,   $amount, $createdAt = null) {
         $this->card = $card;
-        $this->transactionId = $transactionId;
-        $this->transactionContent = $transactionContent;
+        $this->type = $type;
         $this->amount = $amount;
+        $this->method = $method;
         $this->createdAt = $createdAt;
     }
 
-    public function PaymentTransaction($id, $transactionId, $type, $amount, $method) {
+    public function PaymentTransaction($id , $transactionId, $type, $amount, $method) {
         $this->id = $id;
         $this->type = $type;
         $this->amount = $amount;
