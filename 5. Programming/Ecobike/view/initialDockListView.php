@@ -49,7 +49,7 @@
 
         .section {
             margin: 20px 0;
-            border: 2px solid #8C36C0;
+            border: 2px solid #6699CC;
             border-radius: 5px;
             background-color: #F5F5F5;
             padding: 20px;
@@ -85,7 +85,7 @@
         }
 
         .custom-button {
-            background-color: #CC99FF;
+            background-color: #6699CC;
             border: none;
             color: black;
             padding: 10px 20px;
@@ -195,15 +195,15 @@
 
     <!-- ------------------------------------------ -->
     <div id="container">
-        <div style="position: relative; background-color: #8C36C0; height: 60px; width: 1366px;">
+        <div style="position: relative; background-color: #6699CC; height: 60px; width: 1366px;">
             <img id="logo" src="view/image/LOGO.png" alt="Logo" style="position: absolute; top: 0; left: 0; cursor: hand; width: 176px; height: 60px;">
-            
+
         </div>
         <div id="scrollPane">
             <div id="content">
 
                 <div class="search-box">
-                    <h1 style="color: #8c36c0; font-size: 48px; margin-left: 305px; margin-top: 68.203125px;">DOCKS</h1>
+                    <h1 style="color: #003399; font-size: 48px; margin-left: 305px; margin-top: 68.203125px;">DOCKS</h1>
                     <input class="search-input" type="text" placeholder="Search">
                     <button class="custom-button">Search</button>
 
