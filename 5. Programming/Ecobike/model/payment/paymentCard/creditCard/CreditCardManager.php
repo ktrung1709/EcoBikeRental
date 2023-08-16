@@ -38,8 +38,8 @@ class CreditCardManager
     {
         // query the card
         $SQL = "SELECT * FROM card " .
-               "WHERE id = CAST(? AS uuid)";
-
+               "WHERE id = ?";
+    
         try {
             $conn = EBRDB::getConnection();
             $pstmt = $conn->prepare($SQL);
@@ -48,16 +48,18 @@ class CreditCardManager
             // Handle result set
             $rs = $pstmt->execute();
             if ($rs && ($row = $pstmt->fetch())) {
-                return new CreditCard(
-                    $cardId,
+                $card = new CreditCard(
                     $row["card_num"],
                     $row["card_owner"],
-                    000,
-                    $row["exp_date"]
+                    $row["security_code"],
+                    $row["exp_date"],
+                    $cardId
                 );
+                return $card;
             }
         } catch (\PDOException $ex) {
-            $ex->getMessage();
+            // Echo the error message
+            echo "An error occurred: " . $ex->getMessage();
         }
         return null;
     }

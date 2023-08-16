@@ -1,7 +1,8 @@
 <?php
 
-require_once('EBRDB.php');  // Assuming EBRDB class definition here
-
+require_once('model/db/EBRDB.php');  // Assuming EBRDB class definition here
+require_once('model/payment/transaction/PaymentTransaction.php');
+require_once 'model/payment/paymentCard/creditCard/CreditCard.php';
 class PaymentTransactionManager {
 
     private static $instance;  // singleton
@@ -58,8 +59,8 @@ class PaymentTransactionManager {
      * @return string uuid of newly added transaction's record
      */
     public function savePaymentTransaction($paymentTransaction) {
-        $SQL = "INSERT INTO payment_transaction(type, amount, method, card_id, transaction_id) " .
-            "VALUES (?, ?, ?, ?::uuid, ?)";
+        $SQL = "INSERT INTO payment_transaction(type, amount, method, card_id) " .
+            "VALUES (?, ?, ?, ?)";
 
         $id = "save failed";
 
@@ -72,7 +73,7 @@ class PaymentTransactionManager {
             $stmt->bindValue(2, $paymentTransaction->getAmount(), PDO::PARAM_INT);
             $stmt->bindValue(3, $paymentTransaction->getMethod(), PDO::PARAM_STR);
             $stmt->bindValue(4, $paymentTransaction->getCard()->getId(), PDO::PARAM_STR);
-            $stmt->bindValue(5, $paymentTransaction->getTransactionId(), PDO::PARAM_STR);
+           
             // Handle update
             $affectedRows = $stmt->execute();
             // check the affected rows
@@ -82,7 +83,11 @@ class PaymentTransactionManager {
             }
         } catch (PDOException $ex) {
             $ex->getMessage();
-        }
+           
+                echo "Error: " . $ex->getMessage(); // Output the error message for debugging
+                // or log the error message using an appropriate method
+            }
+        
         $paymentTransaction->setId($id);
         return $id;
     }
