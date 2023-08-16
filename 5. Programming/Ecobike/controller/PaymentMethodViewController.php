@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once 'model/payment/paymentCard/creditCard/CreditCard.php'; // Update the path to your CreditCard class
 require_once 'model/payment/paymentCard/creditCard/CreditCardManager.php'; // Update the path to your CreditCardManager class
 
@@ -21,9 +21,12 @@ class PaymentMethodViewController {
         // Save the credit card information
         $creditCardManager = CreditCardManager::getInstance();
         $cardId = $creditCardManager->saveCreditCard($creditCard);
-        
+        $_SESSION["cardId"] = $cardId;
         if ($cardId !== 'save failed') {
-            echo "Payment processed successfully. Card ID: " . $cardId;
+           
+            // Redirect to the paymentTransaction request
+            header("Location: requestHandler.php?request=paymentTransaction");
+            exit; // Make sure to exit after redirecting
         } else {
             echo "Payment processing failed.";
         }
