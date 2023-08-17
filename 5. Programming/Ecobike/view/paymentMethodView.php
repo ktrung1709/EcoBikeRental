@@ -24,9 +24,8 @@
 		
 		 <input type="hidden" name="bikeId" value="<?php echo $bikeId; ?>"> 
         <input type="submit" value="Process Payment">
+		
     </form>
-
-  
     </div>
 </body>
 
