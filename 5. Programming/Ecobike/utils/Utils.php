@@ -40,8 +40,8 @@ class Utils {
         return $digest;
     }
 
-    public static $DATE_FORMATER = 'Y-m-d H:i:s';
-    public static $DATE_FORMATER_FOR_DISPLAY = 'Y-m-d H:i';
+    const DATE_FORMATER = 'Y-m-d H:i:s';
+    const DATE_FORMATER_FOR_DISPLAY = 'Y-m-d H:i';
 
     public static function minusLocalDateTime($before, $after) {
         $duration = $after->getTimestamp() - $before->getTimestamp();
