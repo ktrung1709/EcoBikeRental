@@ -62,7 +62,7 @@
             <h1 style="font-size: 48px; color: #6699CC;">PAYMENT CARD</h1>
         </div>
         <div style="margin: 0 auto; width: 423px; border: 3px solid #FFCC99; border-radius: 15px; padding: 40px;" require>
-            <form>
+            <form action="requestHandler.php?request=processPayment" method="post">
                 <div style="margin-bottom: 20px;">
                     <label style="font-size: 15px; color: #505050;">Card Owner</label>
                     <br>
@@ -71,13 +71,13 @@
                 <div style="margin-bottom: 20px;">
                     <label style="font-size: 15px; color: #505050;">Card Number</label>
                     <input type="text" id="cardNumber" style="width: 343px; height: 36px; border: 2px solid #AAAAAA; border-radius: 3px;" require>
-                    <!-- <img src="icons/credit_card_icon.png" alt="Credit Card Icon" style="width: 24px; height: 24px; margin-left: 10px;"> -->
+                     <!-- <img src="icons/credit_card_icon.png" alt="Credit Card Icon" style="width: 24px; height: 24px; margin-left: 10px;"> > -->
                 </div>
                 <div style="display: flex; margin-bottom: 20px;">
                     <div style="flex: 1; margin-right: 10px;">
                         <label style="font-size: 15px; color: #505050;">EXP Date</label>
                         <input type="text" id="expDate" style="width: 151px; height: 36px; border: 2px solid #AAAAAA; border-radius: 3px;" placeholder="MM/YYYY" require>
-                        <!-- <img src="icons/credit_card_icon.png" alt="Credit Card Icon" style="width: 24px; height: 24px; margin-left: 10px;"> -->
+                        <!-- -- <img src="icons/credit_card_icon.png" alt="Credit Card Icon" style="width: 24px; height: 24px; margin-left: 10px;"> --> 
                     </div>
                     <div style="flex: 1;">
                         <label style="font-size: 15px; color: #505050;">Security Code</label>
@@ -88,11 +88,11 @@
                 <input id="paymentConfirmButton" type="submit" value="Process Payment">
             </form>
 
-            <!-- <div style="text-align: center; margin-top: 20px;">
+            <!-- <style="text-align: center; margin-top: 20px;">
                 <button id="paymentConfirmButton">
                     CONTINUE
-                </button>
-            </div> -->
+                </button> -->
+
             <p id="errorText" style="color: RED; text-align: center; font-family: 'Arial Bold'; font-size: 18px; display: none;">Text</p>
         </div>
 
