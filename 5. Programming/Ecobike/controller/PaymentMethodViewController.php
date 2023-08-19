@@ -20,6 +20,27 @@ class PaymentMethodViewController {
         
         // Save the credit card information
         $creditCardManager = CreditCardManager::getInstance();
+        $existingCard = $creditCardManager->getCardByCardNumber($cardNum);
+    
+        if ($existingCard !== null) {
+            try {
+                // Card with the same number exists, update cardId and store in session
+                $existingCardId = $existingCard->getId();
+                
+                if ($existingCardId !== null) {
+                    $_SESSION["cardId"] = $existingCardId;
+                    
+                    // Redirect to the paymentTransaction request
+                    header("Location: requestHandler.php?request=paymentTransaction");
+                    exit; // Make sure to exit after redirecting
+                } else {
+                    echo "Error: Existing card ID is null.";
+                }
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        }
+        
         $cardId = $creditCardManager->saveCreditCard($creditCard);
         $_SESSION["cardId"] = $cardId;
         if ($cardId !== 'save failed') {

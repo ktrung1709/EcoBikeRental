@@ -71,7 +71,7 @@ class CreditCardManager
                "WHERE card_num = ? " .
                "ORDER BY id " .
                "LIMIT 1";
-
+    
         try {
             $conn = EBRDB::getConnection();
             $pstmt = $conn->prepare($SQL);
@@ -81,30 +81,23 @@ class CreditCardManager
             $rs = $pstmt->execute();
             if ($rs && ($row = $pstmt->fetch())) {
                 $sc = 0;
-                for ($i = 0; $i <= 9; $i++) {
-                    for ($j = 0; $j <= 9; $j++) {
-                        for ($l = 0; $l <= 9; $l++) {
-                            if ($row["security_code"] === Utils::sha256("" . $i . $j . $l)) {
-                                $sc = 100 * $i + 10 * $j + $l;
-                                echo $sc;
-                            }
-                        }
-                    }
-                }
+                
                 return new CreditCard(
-                    $row["id"],
                     $row["card_num"],
                     $row["card_owner"],
-                    $sc,
-                    $row["exp_date"]
+                    $row["security_code"],
+                    $row["exp_date"],$row["id"]
+                    
                 );
+            } else {
+                echo "Error: Card not found.";
             }
         } catch (\PDOException $ex) {
-            $ex->getMessage();
+            echo "Error: " . $ex->getMessage();
         }
         return null;
     }
-
+    
     /**
      * Save the card into the database
      *

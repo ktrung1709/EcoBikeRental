@@ -208,19 +208,23 @@
                     <br>
                     <div class="field">
                         <label for="bikeId" class="info-label">Bike ID:</label>
-                        <input type="text" id="bikeId" class="info-value" name="bikeId" value="<?php echo $bike->getId(); ?>">
+                        <input readonly type="text" id="bikeId" class="info-value" name="bikeId" value="<?php echo $bike->getId(); ?>">
                     </div>
                     <br>
                     <div class="field">
                         <label for="deposit" class="info-label">Deposit:</label>
-                        <input type="text" id="deposit" class="info-value" name="deposit" value="<?php echo $bike->getDeposit(); ?>">
+                        <input readonly type="text" id="deposit" class="info-value" name="deposit" value="<?php echo $bike->getDeposit(); ?>">
                         VND
                     </div>
 
 
                 </div>
                 <div class="buttons-box">
-                    <button class="submit-btn button confirm-button " type="submit">Cancel Payment</button>
+                <button  class="submit-btn button confirm-button " type="submit"><a
+                href="requestHandler.php?request=paymentMethod">
+                Cancel Payment
+                         </a>
+                       </button>
                     <button class="submit-btn button confirm-button " type="submit">Confirm Pay Deposit</button>
                 </div>
                 <div class="card-info">
@@ -228,7 +232,7 @@
                     <div class="field">
                         <label for="cardNum" class="card-label">Card Id:</label>
                         <br>
-                        <input type="text" id="cardId" class="card-field" name="cardId" value="<?php echo $card1->getId(); ?>">
+                        <input readonly type="text" id="cardId" class="card-field" name="cardId" value="<?php echo $card1->getId(); ?>">
                     </div>
                     <div class="field">
                         <label for="cardNum" class="card-label">Card Number:</label>
