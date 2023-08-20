@@ -5,6 +5,7 @@ require_once 'controller/BikesInDockViewController.php';
 require_once 'controller/BikeDetailsViewController.php';
 require_once 'controller/PaymentMethodViewController.php'; // Include your PaymentMethodViewController
 require_once 'controller/PayDepositViewController.php';
+require_once 'controller/ReturningDockViewController.php';
 require_once 'model/dock/DockManager.php'; // Include your DockManager file
 require_once 'model/bike/BikeManager.php'; // Include your BikeManager file
 
@@ -39,5 +40,8 @@ if ($request === 'bikesInDock') {
     $formData1 = $_POST;
     $paymentTransactionViewController = new PayDepositTransactionViewController();
     $paymentTransactionViewController->processDeposit($formData1);
+} elseif ($request === 'returningDock') {
+    $returningDockViewController = new ReturningDockViewController();
+    $returningDockViewController->displayReturningDockView();
 }
 ?>
