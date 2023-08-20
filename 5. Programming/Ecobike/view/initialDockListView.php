@@ -228,7 +228,7 @@
                     <div class="section">
                         <div class="info">
                             <span>Bike Number:</span>
-                            <span id="dockBikeNum">100/200</span>
+                            <span id="dockBikeNum">'.$dock->getNumberOfAvailableBike().'/'.$dock->getCapacity().'</span>
                         </div>
                     </div>
                     <div>
