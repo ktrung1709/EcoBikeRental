@@ -6,7 +6,8 @@ require_once 'model/bike/BikeManager.php';
 require_once 'model/bike/Bike.php';
 require_once 'model/payment/paymentCard/creditCard/CreditCard.php';
 require_once 'model/payment/paymentCard/creditCard/CreditCardManager.php'; 
-
+require_once 'model/session/Session.php';
+require_once 'model/session/SessionManager.php';
 class PayDepositTransactionViewController {
       public function displayPayDepositTransactionView(){
         $bikeManager = new BikeManager();
@@ -26,15 +27,21 @@ class PayDepositTransactionViewController {
         $type = "Deposit";
         $method = "CreditCard";
         $amount = $formData['deposit'];
+        $bikeId = $formData['bikeId'];
           
         $cardManager = new CreditCardManager();
         $card = $cardManager->getCardById($cardId);
-         
+        $bikeManager = new BikeManager();
+        $bike = $bikeManager->getBikeById($bikeId);
         $paymentTransaction = new PaymentTransaction($card,$type,$method,$amount);
         $paymentTransactionManager = PaymentTransactionManager::getInstance();
-         $paymentTransactionId = $paymentTransactionManager->savePaymentTransaction($paymentTransaction);
+         $paymentTransactionId = $paymentTransactionManager->savePaymentTransaction($paymentTransaction); echo $paymentTransactionId;
+         $createdPaymentTransaction = $paymentTransactionManager->getTransactionById($paymentTransactionId);
+         $sessionManager = SessionManager::getInstance();
+         $newSession = $sessionManager->createSession($bike,$card,$createdPaymentTransaction);
+         echo $newSession->getId();
 
-         echo $paymentTransactionId;
+
 
       }
 

@@ -1,13 +1,9 @@
 <?php
 
-require 'model/bike/Bike.php';
-require 'model/bike/BikeManager.php';
-require 'model/db/EBRDB.php';
-require 'model/payment/paymentCard/creditCard/CreditCard.php';
-require 'model/payment/paymentCard/creditCard/CreditCardManager.php';
-require 'model/payment/transaction/PaymentTransaction.php';
-require 'model/payment/transaction/PaymentTransactionManager.php';
-require 'utils/Utils.php';
+
+
+require_once "utils/Utils.php";
+
 
 class SessionManager {
 
@@ -75,16 +71,22 @@ class SessionManager {
         $SQL = "INSERT INTO session(bike_id, card_id, rent_transactionid, start_time) "
             . "VALUES(:bikeId, :cardId, :rentTransactionId, :startTime)";
         $id = "";
-    
+        
         try {
             $conn = EBRDB::getConnection();
             $stmt = $conn->prepare($SQL);
+            
+            $bikeId = $newSession->getBike()->getId();
+            $cardId = $newSession->getCard()->getId();
+            $rentTransactionId = $newSession->getRentTransaction()->getId();
+          
+            $startTime = $newSession->getStartTime()->format(Utils::DATE_FORMATER);
     
-            $stmt->bindParam(':bikeId', $newSession->getBike()->getId());
-            $stmt->bindParam(':cardId', $newSession->getCard()->getId());
-            $stmt->bindParam(':rentTransactionId', $newSession->getRentTransaction()->getId());
-            $stmt->bindParam(':startTime', $newSession->getStartTime()->format(Utils::DATE_FORMATER));
-    
+            $stmt->bindParam(':bikeId', $bikeId);
+            $stmt->bindParam(':cardId', $cardId);
+            $stmt->bindParam(':rentTransactionId', $rentTransactionId);
+            $stmt->bindParam(':startTime', $startTime);
+            
             $stmt->execute();
             $generatedId = $conn->lastInsertId();
     
@@ -101,7 +103,6 @@ class SessionManager {
         $newSession->setId($id);
         return $id;
     }
-    
     
 
     private function refreshSessionsList() {

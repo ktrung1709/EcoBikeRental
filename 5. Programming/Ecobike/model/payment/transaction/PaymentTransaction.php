@@ -14,12 +14,13 @@ class PaymentTransaction {
     private $type;
     private $method;
     
-    public function __construct( $card,$type,$method,   $amount, $createdAt = null) {
+    public function __construct( $card,$type,$method,   $amount, $createdAt = null,$id = null) {
         $this->card = $card;
         $this->type = $type;
         $this->amount = $amount;
         $this->method = $method;
         $this->createdAt = $createdAt;
+        $this->id = $id;
     }
 
     public function PaymentTransaction($id , $transactionId, $type, $amount, $method) {

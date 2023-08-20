@@ -1,9 +1,7 @@
 <?php
 
-require 'model/bike/Bike.php';
-require 'model/payment/paymentCard/creditCard/CreditCard.php';
-require 'model/payment/transaction/PaymentTransaction.php';
-require 'utils/Ultis.php';
+
+
 
 class Session {
 
@@ -15,7 +13,7 @@ class Session {
     private $lastResumeTime;
     private $lastRentTimeBeforeLock = 0;
     private $active;
-    private $rentTransaction;
+    private  $rentTransaction;
     private $returnTransaction;
 
     public function __construct(Bike $bike, CreditCard $card, PaymentTransaction $rentTransaction) {
@@ -99,6 +97,10 @@ class Session {
     public function getReturnTransaction() {
         return $this->returnTransaction;
     }
+    public function setRentTransaction($rentTransaction) {
+        $this->rentTransaction = $rentTransaction;
+    }
+
 
     public function setReturnTransaction($returnTransaction) {
         $this->returnTransaction = $returnTransaction;

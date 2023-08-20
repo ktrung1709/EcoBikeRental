@@ -3,6 +3,7 @@
 require_once('model/db/EBRDB.php');  // Assuming EBRDB class definition here
 require_once('model/payment/transaction/PaymentTransaction.php');
 require_once 'model/payment/paymentCard/creditCard/CreditCard.php';
+
 class PaymentTransactionManager {
 
     private static $instance;  // singleton
@@ -28,7 +29,7 @@ class PaymentTransactionManager {
     public function getTransactionById($transactionId) {
         // query the card
         $SQL = "SELECT * FROM payment_transaction "
-            . "WHERE id = ?::uuid";
+            . "WHERE id = ?";
 
         try {
             $conn = EBRDB::getConnection();  // Assuming EBRDB::getConnection() method is defined
@@ -38,16 +39,17 @@ class PaymentTransactionManager {
             // Handle result set
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
+            $cardManager = CreditCardManager::getInstance();
+            $card = $cardManager->getCardById($result['card_id']);
             return new PaymentTransaction(
-                $result['id'],
-                $result['transaction_id'],
+                $card,
                 $result['type'],
-                $result['amount'],
-                $result['method']
+                $result['method'],
+                $result['amount'],$result['created_at'],$result['id']
             );
         } catch (PDOException $ex) {
             $ex->getMessage();
+            echo $ex;
         }
         return null;
     }
