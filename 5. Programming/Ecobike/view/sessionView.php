@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Asia/Bangkok');
 
 $start_time_string = $_SESSION['startTime']; // Assuming this is a string in 'Y-m-d H:i:s' format
 
@@ -7,7 +7,7 @@ $start_time_string = $_SESSION['startTime']; // Assuming this is a string in 'Y-
 // Create a DateTime object from the string
 $start_time1 = new DateTime($start_time_string);
 
-// Set the timezone for the DateTime object
+// Set the format for the DateTime object
 $start_time = $start_time1->format('Y-m-d H:i:s');
 
 
@@ -36,7 +36,7 @@ $start_time = $start_time1->format('Y-m-d H:i:s');
 var start_time = new Date("<?php echo $start_time; ?>");
 var last_pause_time ;
 var end_time = new Date("") ;// You might set this value based on your logic
-
+start_time.setTime(start_time.getTime() - (5 * 60 * 60 * 1000)); // Adding 7 hours in milliseconds
 function format_time(seconds) {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);

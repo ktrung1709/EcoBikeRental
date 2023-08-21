@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_destroy();
+session_write_close();
 session_start();
 // Include the necessary files
 require_once 'controller/InitialDockListViewController.php';

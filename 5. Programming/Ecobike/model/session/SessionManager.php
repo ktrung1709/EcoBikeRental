@@ -79,8 +79,9 @@ class SessionManager {
             $bikeId = $newSession->getBike()->getId();
             $cardId = $newSession->getCard()->getId();
             $rentTransactionId = $newSession->getRentTransaction()->getId();
-          
-            $startTime = $newSession->getStartTime()->format(Utils::DATE_FORMATER);
+            $userTimeZone = new DateTimeZone('Asia/Bangkok'); // Replace with your time zone
+
+            $startTime = $newSession->getStartTime()->setTimezone($userTimeZone)->format(Utils::DATE_FORMATER);
     
             $stmt->bindParam(':bikeId', $bikeId);
             $stmt->bindParam(':cardId', $cardId);
