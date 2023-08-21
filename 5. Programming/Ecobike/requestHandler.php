@@ -42,4 +42,9 @@ elseif ($request === 'viewSession') {
     $sessionViewController = new SessionViewController();
     $sessionViewController->displaySessionView();
 }
+elseif ($request === 'processSession') {
+    
+    $sessionViewController = new SessionViewController();
+    $sessionViewController->processSession();
+}
 ?>

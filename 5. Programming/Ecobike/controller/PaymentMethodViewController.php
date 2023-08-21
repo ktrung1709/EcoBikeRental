@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once 'model/payment/paymentCard/creditCard/CreditCard.php'; // Update the path to your CreditCard class
 require_once 'model/payment/paymentCard/creditCard/CreditCardManager.php'; // Update the path to your CreditCardManager class
 

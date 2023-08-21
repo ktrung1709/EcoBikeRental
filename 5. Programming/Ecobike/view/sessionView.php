@@ -1,12 +1,17 @@
 <?php
-session_start();
-$sessionId = $_SESSION['sessionId'];
 
-$sessionManager = SessionManager::getInstance();
 
-$newSession = $sessionManager->getSessionById($sessionId);
-$userTimeZone = new DateTimeZone('Asia/Bangkok'); // Replace with your time zone
-$start_time = $newSession->getStartTime()->setTimezone($userTimeZone)->format('Y-m-d H:i:s');
+$start_time_string = $_SESSION['startTime']; // Assuming this is a string in 'Y-m-d H:i:s' format
+
+
+// Create a DateTime object from the string
+$start_time1 = new DateTime($start_time_string);
+
+// Set the timezone for the DateTime object
+$start_time = $start_time1->format('Y-m-d H:i:s');
+
+
+
 
 ?>
 
@@ -30,7 +35,7 @@ $start_time = $newSession->getStartTime()->setTimezone($userTimeZone)->format('Y
 // Fake session data for demonstration
 var start_time = new Date("<?php echo $start_time; ?>");
 var last_pause_time ;
-var end_time = new Date(); // You might set this value based on your logic
+var end_time = new Date("") ;// You might set this value based on your logic
 
 function format_time(seconds) {
   const hours = Math.floor(seconds / 3600);
@@ -71,7 +76,7 @@ function end_session() {
 // On page load
 window.onload = function() {
   // Start the clock if the session has started
-  if (start_time.getTime() > 0 && end_time.getTime() === 0) {
+  if (start_time.getTime() > 0 ) {
     interval = setInterval(update_clock, 1000);
     document.getElementById('start').disabled = true;
   }

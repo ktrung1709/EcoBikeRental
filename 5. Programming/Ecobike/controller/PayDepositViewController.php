@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once 'model/payment/transaction/PaymentTransactionManager.php';
 require_once 'model/payment/transaction/PaymentTransaction.php';
 require_once 'model/bike/BikeManager.php';
@@ -35,12 +35,12 @@ class PayDepositTransactionViewController {
         $bike = $bikeManager->getBikeById($bikeId);
         $paymentTransaction = new PaymentTransaction($card,$type,$method,$amount);
         $paymentTransactionManager = PaymentTransactionManager::getInstance();
-         $paymentTransactionId = $paymentTransactionManager->savePaymentTransaction($paymentTransaction); echo $paymentTransactionId;
+         $paymentTransactionId = $paymentTransactionManager->savePaymentTransaction($paymentTransaction); 
          $createdPaymentTransaction = $paymentTransactionManager->getTransactionById($paymentTransactionId);
          $sessionManager = SessionManager::getInstance();
          $newSession = $sessionManager->createSession($bike,$card,$createdPaymentTransaction);
          $_SESSION['sessionId'] = $newSession->getId();
-         header("Location: requestHandler.php?request=viewSession");
+         header("Location: requestHandler.php?request=processSession");
          exit; // Make sure to exit after redirecting
 
 
