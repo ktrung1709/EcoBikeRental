@@ -56,7 +56,7 @@ class SessionManager {
 
     public function getSessionById($id) {
         foreach ($this->sessions as $session) {
-            if ($session->getId() === $id) {
+            if ($session->getId() == $id) {
                 return $session;
             }
         }

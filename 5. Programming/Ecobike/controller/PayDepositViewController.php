@@ -39,8 +39,9 @@ class PayDepositTransactionViewController {
          $createdPaymentTransaction = $paymentTransactionManager->getTransactionById($paymentTransactionId);
          $sessionManager = SessionManager::getInstance();
          $newSession = $sessionManager->createSession($bike,$card,$createdPaymentTransaction);
-         echo $newSession->getId();
-
+         $_SESSION['sessionId'] = $newSession->getId();
+         header("Location: requestHandler.php?request=viewSession");
+         exit; // Make sure to exit after redirecting
 
 
       }
