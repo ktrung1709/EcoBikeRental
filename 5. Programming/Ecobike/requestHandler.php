@@ -5,7 +5,7 @@ require_once 'controller/BikesInDockViewController.php';
 require_once 'controller/BikeDetailsViewController.php';
 require_once 'controller/PaymentMethodViewController.php'; // Include your PaymentMethodViewController
 require_once 'controller/PayDepositViewController.php';
-require_once 'controller/ReturningDockViewController.php';
+require_once 'controller/ReturningBikeToDockViewController.php';
 require_once 'model/dock/DockManager.php'; // Include your DockManager file
 require_once 'model/bike/BikeManager.php'; // Include your BikeManager file
 
@@ -48,9 +48,10 @@ elseif ($request === 'processSession') {
     $sessionViewController = new SessionViewController();
     $sessionViewController->processSession();
 }
-elseif ($request === 'returningDock') {
+elseif ($request === 'returningBikeToDock') {
+    $sessionId = $_GET['sessionId'];
 
-    $returningDockViewController = new ReturningDockViewController();
-    $returningDockViewController->displayReturningDockView();
+    $returningDockViewController = new ReturningBikeToDockViewController();
+    $returningDockViewController->displayReturningBikeToDockView($sessionId);
 }
 ?>
