@@ -31,6 +31,8 @@
             color: #800080;
         }
         .invoice-image {
+            width: 200px;
+            height: 200px;
             text-align: center;
             padding: 20px 0;
         }
@@ -110,7 +112,7 @@
                 <h1>INVOICE</h1>
             </div>
             <div class="invoice-image">
-                <img src="bike_image.jpg" alt="Bike Image">
+                <img src="<?php echo $bike->getImageURL();?>" alt="Bike Image">
             </div>
         </div>
         <div class="invoice-section">
@@ -118,23 +120,26 @@
                 <table>
                     <tr>
                         <th>CARD NUMBER:</th>
-                        <td>1234 5678 9012 3456</td>
+                        <td><?php echo $card->getCardNum();
+                        ?></td>
                     </tr>
                     <tr>
                         <th>START TIME:</th>
-                        <td>2023-08-01 10:00 AM</td>
+                        <td><?php echo $session->getStartTime();
+                        ?></td>
                     </tr>
                     <tr>
                         <th>END TIME:</th>
-                        <td>2023-08-01 02:00 PM</td>
+                        <td><?php echo $session->getEndTime();
+                        ?></td>
                     </tr>
                     <tr>
                         <th>LENGTH:</th>
-                        <td>4 hours</td>
+                        <td>4H</td>
                     </tr>
                     <tr>
                         <th>DEPOSIT:</th>
-                        <td><span style="color: #008000;">$50</span></td>
+                        <td><span style="color: #008000;"><?php echo $bike->getDeposit();?></span></td>
                     </tr>
                     <tr>
                         <th>TOTAL FEES:</th>

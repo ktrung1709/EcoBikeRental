@@ -39,10 +39,7 @@ $start_time = $start_time1->format('Y-m-d H:i:s');
 <!-- <button id="pause">Pause</button>
 <button id="resume">Resume</button> -->
 <button id="end">End Session</button>
-
-<!-- <button class="return-bike"><a href="requestHandler.php?request=returningBikeToDock&sessionId=?php echo $bike->getId(); ?>">RETURN BIKE</a></button> -->
-
-<button class="return-bike"><a href="requestHandler.php?request=returningBikeToDock&sessionId=43">RETURN BIKE</a></button>
+<button class="return-bike"><a href="requestHandler.php?request=returningBikeToDock">RETURN BIKE</a></button>
 
 <script>
 

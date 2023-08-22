@@ -158,7 +158,9 @@
                 <div class="dock-name-detail">Dock Name</div>
                 <div class="dock-slots">SLOT ab/cd</div>
                 <!-- </div> -->
-            <button class="return-bike-btn">RETURN BIKE HERE</button>
+            <button class="return-bike-btn">
+                <a href="requestHandler.php?request=invoice">RETURN BIKE HERE</a>
+            </button>
             </div>
 
         </div>

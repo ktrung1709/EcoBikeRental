@@ -4,7 +4,7 @@ require_once 'model/dock/DockManager.php'; // Update the path to your DockManage
 require_once 'model/session/SessionManager.php';
 
 class ReturningBikeToDockViewController {
-    public function displayReturningBikeToDockView($sessionId) {
+    public function displayReturningBikeToDockView() {
         $dockManager = new DockManager();
         $dockList = $dockManager->getDockList(); // Fetch docks from the database using DockManager
 
