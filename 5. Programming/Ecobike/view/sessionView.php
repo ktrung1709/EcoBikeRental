@@ -36,8 +36,8 @@ $start_time = $start_time1->format('Y-m-d H:i:s');
 
 <div id="clockdiv">00:00:00</div>
 <button id="start">Start</button>
-<button id="pause">Pause</button>
-<button id="resume">Resume</button>
+<!-- <button id="pause">Pause</button>
+<button id="resume">Resume</button> -->
 <button id="end">End Session</button>
 
 <!-- <button class="return-bike"><a href="requestHandler.php?request=returningBikeToDock&sessionId=?php echo $bike->getId(); ?>">RETURN BIKE</a></button> -->
@@ -45,12 +45,24 @@ $start_time = $start_time1->format('Y-m-d H:i:s');
 <button class="return-bike"><a href="requestHandler.php?request=returningBikeToDock&sessionId=43">RETURN BIKE</a></button>
 
 <script>
-// Fake session data for demonstration
+
 var start_time = new Date("<?php echo $start_time; ?>");
-var last_pause_time = null;
+start_time.setTime(start_time.getTime() - (5 * 60 * 60 * 1000)); // Adding 7 hours in milliseconds
+// var last_pause_time = localStorage.getItem('lastPauseTime');
+// console.log("bro: ", last_pause_time)
+
+// if (last_pause_time) {
+//   last_pause_time = new Date(last_pause_time);
+//   const paused_duration = Math.floor((new Date() - last_pause_time) / 1000);
+//       start_time = new Date(start_time.getTime() + paused_duration * 1000);
+//       console.log("bro: ", paused_duration);
+//       console.log("bro11: ", start_time);
+//       localStorage.setItem('startTime',start_time);
+//       localStorage.removeItem('lastPauseTime');
+// }
 var end_time = null ;// You might set this value based on your logic
 var sessionEnded = <?php echo $sessionEnded ? 'true' : 'false'; ?>;
-start_time.setTime(start_time.getTime() - (5 * 60 * 60 * 1000)); // Adding 7 hours in milliseconds
+
 function format_time(seconds) {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
@@ -69,20 +81,27 @@ function start_clock() {
   document.getElementById('start').disabled = true;
 }
 
-function pause_clock() {
-  last_pause_time = new Date(); // Update last pause time
-  clearInterval(interval);
-}
+// function pause_clock() {
+//   last_pause_time = new Date(); // Update last pause time
+//   localStorage.setItem('lastPauseTime', last_pause_time);
+//   console.log("bro1: ", last_pause_time);
+  
+  
 
-function resume_clock() {
-  const paused_duration = Math.floor((new Date() - last_pause_time) / 1000);
-  start_time = new Date(start_time.getTime() + paused_duration * 1000);
-  interval = setInterval(update_clock, 1000);
-}
+//   clearInterval(interval);
+// }
+
+// function resume_clock() {
+//   const paused_duration = Math.floor((new Date() - last_pause_time) / 1000);
+//   start_time = new Date(start_time.getTime() + paused_duration * 1000);
+//   localStorage.removeItem('lastPauseTime');
+//   last_pause_time = null;
+//   interval = setInterval(update_clock, 1000);
+// }
 function disableButtons() {
   document.getElementById('start').disabled = true;
-  document.getElementById('pause').disabled = true;
-  document.getElementById('resume').disabled = true;
+  // document.getElementById('pause').disabled = true;
+  // document.getElementById('resume').disabled = true;
   document.getElementById('end').disabled = true;
 }
 function checkSessionStatus() {
@@ -123,6 +142,7 @@ window.onload = function() {
 
   // Start the clock if the session has started and hasn't ended
   if (start_time.getTime() > 0 && end_time === null) {
+   
     interval = setInterval(update_clock, 1000);
     document.getElementById('start').disabled = true;
   } else if (end_time !== null) {
@@ -135,8 +155,8 @@ window.onload = function() {
 };
 
 document.getElementById('start').onclick = start_clock;
-document.getElementById('pause').onclick = pause_clock;
-document.getElementById('resume').onclick = resume_clock;
+// document.getElementById('pause').onclick = pause_clock;
+// document.getElementById('resume').onclick = resume_clock;
 document.getElementById('end').onclick = end_session;
 </script>
 
