@@ -31,10 +31,11 @@
             color: #800080;
         }
         .invoice-image {
-            width: 200px;
-            height: 200px;
+            width: 350px;
+            height: 350px;
             text-align: center;
             padding: 20px 0;
+            margin-left: 50px;
         }
         .invoice-details {
             /* margin-top: 20px; */
@@ -125,17 +126,24 @@
                     </tr>
                     <tr>
                         <th>START TIME:</th>
-                        <td><?php echo $session->getStartTime();
+                        <td><?php echo $session->getStartTime()->format('d-m-Y H:i:s a');;
                         ?></td>
                     </tr>
                     <tr>
                         <th>END TIME:</th>
-                        <td><?php echo $session->getEndTime();
+                        <td><?php echo $session->getEndTime()->format('d-m-Y H:i:s a');;
                         ?></td>
                     </tr>
                     <tr>
                         <th>LENGTH:</th>
-                        <td>4H</td>
+                        <td>
+                        <?php
+        $startTime = $session->getStartTime();
+        $endTime = $session->getEndTime();
+        $interval = $startTime->diff($endTime);
+        echo $interval->format('%d days, %H hours, %i minutes, %s seconds');
+        ?>
+                        </td>
                     </tr>
                     <tr>
                         <th>DEPOSIT:</th>
@@ -156,13 +164,17 @@
         <div class="invoice-section payment-section">
             <h1>PAYMENT CARD</h1>
             <div class="normal-label">Card Owner</div>
-            <input type="text" placeholder="Card Owner" value="Group x">
+            <input type="text" placeholder="Card Owner" value="<?php echo $card->getCardOwner();
+                        ?>">
             <div class="normal-label">Card Number</div>
-            <input type="text" placeholder="Card Number" value="121102">
+            <input type="text" placeholder="Card Number" value="<?php echo $card->getCardNum();
+                        ?>">
             <div class="normal-label">EXP Date</div>
-            <input type="text" placeholder="EXP Date" value="1225">
+            <input type="text" placeholder="EXP Date" value="<?php echo $card->getExpDate();
+                        ?>">
             <div class="normal-label">Security Code</div>
-            <input type="password" placeholder="Security Code" value="*****">
+            <input type="password" placeholder="Security Code" value="<?php echo $card->getSecurityCode();
+                        ?>">
             <br>
             <input type="checkbox" id="useDifferentCard">
             <label class="normal-label" for="useDifferentCard">USE DIFFERENT CARD TO RETURN MONEY</label>

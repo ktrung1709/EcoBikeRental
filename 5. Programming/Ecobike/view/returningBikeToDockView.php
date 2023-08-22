@@ -14,7 +14,7 @@
         }
 
         .select-dock-text {
-            color: #8c36c0;
+            color: #3498db;
             font-weight: bold;
             font-size: 48px;
         }
@@ -115,17 +115,27 @@
         }
 
         .return-bike-btn {
-            background-color: #8c36c0;
-            color: #F0F0F0;
-            font-weight: bold;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            align-items: center;
-            justify-content: center;
-        }
+    display: inline-block;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.return-bike-btn a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.return-bike-btn:hover {
+    background-color: #2980b9;
+}
     </style>
     <script>
         // JavaScript code here
