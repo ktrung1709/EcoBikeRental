@@ -22,6 +22,8 @@ $start_time = $start_time1->format('Y-m-d H:i:s');
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Count-Up Timer with Session Control</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
 
@@ -74,6 +76,18 @@ function end_session() {
   end_time = new Date(); // Record end time in the database
   clearInterval(interval);
   // You can also update the end_time in the database using an AJAX request
+  $.post("session_api.php", { action: "end", end_time: end_time.getTime() }, function(response) {
+  // Handle response from the server
+  if (response === "success") {
+    // Session ended successfully, update UI or perform other actions
+    alert("Session ended successfully");
+    console.error(response);
+  } else {
+    // Session end failed or unexpected response, handle accordingly
+    alert("Session end failed");
+    console.error(response);
+  }
+});
 
 }
 
