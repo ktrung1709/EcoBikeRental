@@ -3,7 +3,14 @@ date_default_timezone_set('Asia/Bangkok');
 
 $start_time_string = $_SESSION['startTime']; // Assuming this is a string in 'Y-m-d H:i:s' format
 
+$sessionId = $_SESSION['sessionId'];
+echo $sessionId;
 
+$sessionManager = SessionManager::getInstance();
+
+$newSession = $sessionManager->getSessionById($sessionId);
+
+$sessionEnded = ($newSession !== null && $newSession->getEndTime() !== null);
 // Create a DateTime object from the string
 $start_time1 = new DateTime($start_time_string);
 
@@ -40,8 +47,9 @@ $start_time = $start_time1->format('Y-m-d H:i:s');
 <script>
 // Fake session data for demonstration
 var start_time = new Date("<?php echo $start_time; ?>");
-var last_pause_time ;
-var end_time = new Date("") ;// You might set this value based on your logic
+var last_pause_time = null;
+var end_time = null ;// You might set this value based on your logic
+var sessionEnded = <?php echo $sessionEnded ? 'true' : 'false'; ?>;
 start_time.setTime(start_time.getTime() - (5 * 60 * 60 * 1000)); // Adding 7 hours in milliseconds
 function format_time(seconds) {
   const hours = Math.floor(seconds / 3600);
@@ -71,10 +79,29 @@ function resume_clock() {
   start_time = new Date(start_time.getTime() + paused_duration * 1000);
   interval = setInterval(update_clock, 1000);
 }
+function disableButtons() {
+  document.getElementById('start').disabled = true;
+  document.getElementById('pause').disabled = true;
+  document.getElementById('resume').disabled = true;
+  document.getElementById('end').disabled = true;
+}
+function checkSessionStatus() {
+  console.log("sessionEnded:", sessionEnded);
+  console.log("start_time.getTime():", start_time.getTime());
+  console.log("end_time:", end_time);
+  if (sessionEnded) {
+    end_time = new Date(); // Set end_time if the session has ended
+    update_clock();
+    disableButtons();
+  }
+}
+
 
 function end_session() {
   end_time = new Date(); // Record end time in the database
   clearInterval(interval);
+    document.getElementById('clockdiv').innerHTML = format_time(Math.floor((end_time - start_time) / 1000));
+    disableButtons();
   // You can also update the end_time in the database using an AJAX request
   $.post("session_api.php", { action: "end", end_time: end_time.getTime() }, function(response) {
   // Handle response from the server
@@ -93,11 +120,18 @@ function end_session() {
 
 // On page load
 window.onload = function() {
-  // Start the clock if the session has started
-  if (start_time.getTime() > 0 ) {
+
+  // Start the clock if the session has started and hasn't ended
+  if (start_time.getTime() > 0 && end_time === null) {
     interval = setInterval(update_clock, 1000);
     document.getElementById('start').disabled = true;
+  } else if (end_time !== null) {
+    update_clock();
+    disableButtons(); // Disable buttons for ended sessions
   }
+
+  // Check the session status
+  checkSessionStatus();
 };
 
 document.getElementById('start').onclick = start_clock;

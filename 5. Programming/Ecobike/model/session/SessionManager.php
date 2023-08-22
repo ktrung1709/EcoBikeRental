@@ -129,7 +129,7 @@ class SessionManager {
                 $bike = BikeManager::getInstance()->getBikeById($bike_id);
                 $card = CreditCardManager::getInstance()->getCardById($card_id);
     
-                if ($return_transactionid == null || $end_time == null) {
+                if ( $end_time == null) {
                     $session = new Session(
                         $bike,
                         $card,
@@ -137,7 +137,7 @@ class SessionManager {
                     );
                     $session->setId($id);
                     $session->setStartTime(new DateTime($start_time));
-                } else {
+                } else { 
 
                     $session = new Session(
                         $bike,
@@ -146,7 +146,7 @@ class SessionManager {
                     );
                     $session->setId($id);
                     $session->setStartTime(new DateTime($start_time));
-                    $session->setReturnTransaction(PaymentTransactionManager::getInstance()->getTransactionById($return_transactionid));
+                    // $session->setReturnTransaction(PaymentTransactionManager::getInstance()->getTransactionById($return_transactionid));
                     $session->setEndTime(new DateTime($end_time));
                 }
     
