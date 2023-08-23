@@ -126,22 +126,27 @@
                     </tr>
                     <tr>
                         <th>START TIME:</th>
-                        <td><?php echo $session->getStartTime()->format('d-m-Y H:i:s a');;
+                        <td><?php 
+                        echo $session->getStartTime()->format('d-m-Y H:i:s a');
+                    
                         ?></td>
                     </tr>
                     <tr>
                         <th>END TIME:</th>
-                        <td><?php echo $session->getEndTime()->format('d-m-Y H:i:s a');;
+                        <td><?php if($session->getEndTime() !== null){
+                        echo $session->getEndTime()->format('d-m-Y H:i:s a');}
+                        else echo "SESSION HAS NOT ENDED";
                         ?></td>
                     </tr>
                     <tr>
                         <th>LENGTH:</th>
                         <td>
-                        <?php
+                        <?php if($session->getEndTime() !== null){
         $startTime = $session->getStartTime();
         $endTime = $session->getEndTime();
         $interval = $startTime->diff($endTime);
-        echo $interval->format('%d days, %H hours, %i minutes, %s seconds');
+        echo $interval->format('%d days, %H hours, %i minutes, %s seconds');}
+        else echo "SESSION HAS NOT ENDED";
         ?>
                         </td>
                     </tr>

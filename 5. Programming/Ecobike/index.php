@@ -1,7 +1,7 @@
 <?php
 session_start();
 session_write_close();
-session_start();
+
 // Include the necessary files
 require_once 'controller/InitialDockListViewController.php';
 require_once 'controller/BikesInDockViewController.php';
