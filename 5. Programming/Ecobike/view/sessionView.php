@@ -4,7 +4,7 @@ date_default_timezone_set('Asia/Bangkok');
 $start_time_string = $_SESSION['startTime']; // Assuming this is a string in 'Y-m-d H:i:s' format
 
 $sessionId = $_SESSION['sessionId'];
-echo $sessionId;
+
 
 $sessionManager = SessionManager::getInstance();
 
@@ -43,6 +43,10 @@ $start_time = $start_time1->format('Y-m-d H:i:s');
       align-items: center;
       justify-content: center;
     }
+      .custom-button {
+      text-align: center; /* Center the buttons horizontally */
+      margin-top: 20px; /* Add margin to space from clock */
+    }
 
     #clockdiv {
       font-size: 36px;
@@ -70,6 +74,10 @@ $start_time = $start_time1->format('Y-m-d H:i:s');
       align-items: center;
       justify-content: center;
       align-content: center;
+    }
+     .custom-button button:disabled {
+      opacity: 0.7; /* Reduce opacity for disabled buttons */
+      cursor: not-allowed; /* Show "not-allowed" cursor for disabled buttons */
     }
     #start {
       background-color: #FFE4E1;
