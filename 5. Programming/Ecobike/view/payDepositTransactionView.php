@@ -123,7 +123,10 @@
         /* .confirm-button {
             background-color: #8C36C0;
         } */
-
+        a {
+            text-decoration: none;
+            color: black;
+        }
         .confirm-button {
             background-color: #6699CC;
             border: none;

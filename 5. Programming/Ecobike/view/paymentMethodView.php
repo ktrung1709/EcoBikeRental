@@ -33,6 +33,28 @@
         #paymentConfirmButton:focus {
             outline: none;
         }
+
+        .custom-button {
+            background-color: #6699CC;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 30px;
+            margin-left: 20px;
+        }
+
+        .custom-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .custom-button:focus {
+            outline: none;
+        }
     </style>
 </head>
 
@@ -75,7 +97,7 @@
 
 
                 <input type="hidden" name="bikeId" value="<?php echo $bikeId; ?>">
-                <input type="submit" value="Process Payment">
+                <input class="custom-button" type="submit" value="Process Payment">
 
             </form>
 

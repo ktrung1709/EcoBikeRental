@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <style>
         /* CSS styles here */
@@ -20,7 +21,7 @@
         }
 
         .search-dock-container {
-            border: 2px solid yellow;
+            border: 2px solid #FF9966;
             display: flex;
             justify-content: space-between;
             padding: 10px;
@@ -65,10 +66,11 @@
         }
 
         .dock-item {
-            width: calc(40% - 20px); /* Chia thành 3 phần ngang */
+            width: calc(40% - 20px);
+            /* Chia thành 3 phần ngang */
             height: 110px;
             margin: 10px;
-            border: 1px solid #8c36c0;
+            border: 1px solid #6699CC;
             padding: 25px;
             cursor: pointer;
         }
@@ -102,7 +104,7 @@
         }
 
         .dock-slots {
-            color: #8c36c0;
+            color: #483D8B;
             font-weight: bold;
         }
 
@@ -115,27 +117,27 @@
         }
 
         .return-bike-btn {
-    display: inline-block;
-    background-color: #3498db;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+            display: inline-block;
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.return-bike-btn a {
-    color: inherit;
-    text-decoration: none;
-}
+        .return-bike-btn a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-.return-bike-btn:hover {
-    background-color: #2980b9;
-}
+        .return-bike-btn:hover {
+            background-color: #2980b9;
+        }
     </style>
     <script>
         // JavaScript code here
@@ -150,6 +152,7 @@
         }
     </script>
 </head>
+
 <body>
     <div class="navbar">
         <span class="select-dock-text">SELECT DOCK FOR RETURNING</span>
@@ -168,18 +171,18 @@
                 <div class="dock-name-detail">Dock Name</div>
                 <div class="dock-slots">SLOT ab/cd</div>
                 <!-- </div> -->
-            <button class="return-bike-btn">
-                <a href="requestHandler.php?request=invoice">RETURN BIKE HERE</a>
-            </button>
+                <button class="return-bike-btn">
+                    <a href="requestHandler.php?request=invoice">RETURN BIKE HERE</a>
+                </button>
             </div>
 
         </div>
 
-        
+
         <div class="dock-list">
-    <?php
-    foreach ($dockList as $dock) {
-        echo '
+            <?php
+            foreach ($dockList as $dock) {
+                echo '
         <div class="dock-item" onclick="showDockDetails(\'' . $dock->getLocation() . '\', \'SLOT ' . $dock->getNumberOfAvailableBike() . '/' . $dock->getCapacity() . '\', \'' . $dock->getImageURL() . '\')">
             <img class="dock-image" src="' . $dock->getImageURL() . '">
             <div class="dock-info">
@@ -188,11 +191,11 @@
             </div>
         </div>
         ';
-    }
-    ?>
-</div>
+            }
+            ?>
+        </div>
 
-            <!-- <div class="dock-item" onclick="showDockDetails('Dong Da', 'SLOT 10/200')">
+        <!-- <div class="dock-item" onclick="showDockDetails('Dong Da', 'SLOT 10/200')">
                 <img class="dock-image" src="data:image/png;base64, ...">
                 <div class="dock-info">
                     <div class="dock-name">Dong Da</div>
@@ -206,9 +209,9 @@
                     <div class="dock-slots">SLOT 50/100</div>
                 </div>
             </div> -->
-        </div>
+    </div>
     </div>
 
 </body>
-</html>
 
+</html>
