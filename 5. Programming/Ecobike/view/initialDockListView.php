@@ -183,9 +183,18 @@
             color: #6b6b6b;
         }
     </style>
+      
+
 </head>
 
 <body>
+<?php
+        if (isset($_SESSION['transactionSuccess']) && $_SESSION['transactionSuccess'] === true) {
+            echo "TRANSACTION SUCCESSFUL";
+            // Reset the session variable
+            unset($_SESSION['transactionSuccess']);
+        }
+        ?>
     <!-- <h1>Initial Dock List View</h1>
     <ul>
         <?php foreach ($dockList as $dock) : ?>

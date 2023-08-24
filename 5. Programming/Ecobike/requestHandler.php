@@ -59,4 +59,10 @@ elseif ($request === 'invoice')
     $invoiceViewController = new InvoiceViewController();
     $invoiceViewController->displayInvoiceView();
 }
+elseif ($request === 'processInvoice')
+{
+    $formData2 = $_POST;
+    $invoiceViewController = new InvoiceViewController();
+    $invoiceViewController->processInvoice($formData2);
+}
 ?>

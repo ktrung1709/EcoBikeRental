@@ -131,6 +131,18 @@
         }
     </style>
     <script>
+         window.addEventListener('DOMContentLoaded', function() {
+        const confirmButton = document.getElementById('confirmButton');
+
+        confirmButton.addEventListener('click', function() {
+            // Display JavaScript notification on successful form submission
+            confirmButton.disabled = true; // Disable button to prevent multiple submissions
+            setTimeout(function() {
+                alert("Transaction Successful! You will be redirected to the main page.");
+                window.location.href = "mainPage.php";
+            }, 500); // Delay for 0.5 seconds before showing the notification and redirecting
+        });
+    });
         window.addEventListener('DOMContentLoaded', function() {
             const useDifferentCardCheckbox = document.getElementById('useDifferentCard');
             const paymentInputs = document.querySelectorAll('.payment-section input[type="text"], .payment-section input[type="password"]');
@@ -149,6 +161,7 @@
 </head>
 
 <body>
+<form method="post" action="requestHandler.php?request=processInvoice">
     <div class="invoice-container">
         <div class="invoice-section">
             <div class="invoice-header">
@@ -162,71 +175,94 @@
             <div class="invoice-details">
                 <table>
                     <tr>
-                        <th>CARD NUMBER:</th>
-                        <td><?php echo $card->getCardNum();
-                            ?></td>
+                        <th>DEPOSIT CARD NUMBER:</th>
+                        <td>
+                       <?php echo $card->getCardNum();
+                            ?>
+                           
+                        </td>
                     </tr>
                     <tr>
                         <th>START TIME:</th>
-                        <td><?php
-                            echo $session->getStartTime()->format('d-m-Y H:i:s a');
-
-                            ?></td>
+                        <td>
+                            <?php echo $session->getStartTime()->format('d-m-Y H:i:s a'); ?>
+                        </td>
                     </tr>
                     <tr>
                         <th>END TIME:</th>
-                        <td><?php if ($session->getEndTime() !== null) {
+                        <td>
+                            <?php
+                            if ($session->getEndTime() !== null) {
                                 echo $session->getEndTime()->format('d-m-Y H:i:s a');
-                            } else echo "SESSION HAS NOT ENDED";
-                            ?></td>
+                            } else {
+                                echo "SESSION HAS NOT ENDED";
+                            }
+                            ?>
+                        </td>
                     </tr>
                     <tr>
                         <th>LENGTH:</th>
                         <td>
-                            <?php if ($session->getEndTime() !== null) {
+                            <?php
+                            if ($session->getEndTime() !== null) {
                                 $startTime = $session->getStartTime();
                                 $endTime = $session->getEndTime();
                                 $interval = $startTime->diff($endTime);
                                 echo $interval->format('%d days, %H hours, %i minutes, %s seconds');
-                            } else echo "SESSION HAS NOT ENDED";
+                            } else {
+                                echo "SESSION HAS NOT ENDED";
+                            }
                             ?>
                         </td>
                     </tr>
                     <tr>
                         <th>DEPOSIT:</th>
-                        <td><span style="color: #008000;"><?php echo $bike->getDeposit(); ?></span></td>
+                        <td>
+                            <span style="color: #008000;"><?php echo $bike->getDeposit(); ?></span>
+                            <input type="hidden" name="deposit" value="<?php echo $bike->getDeposit(); ?>">
+                        </td>
                     </tr>
                     <tr>
                         <th>TOTAL FEES:</th>
-                        <td><span style="color: red;">$20</span></td>
+                        <td>
+                            <span style="color: red;">150000</span>
+                        </td>
                     </tr>
                 </table>
             </div>
             <div class="returns-section">
                 <h2>RETURNS</h2>
-                <p><span style="font-weight: bold; color: black;">$30</span> (Returns: <span style="color: #008000;">$50</span> - <span style="color: red;">$20</span>)</p>
-                <button class="confirm-button">CONFIRM</button>
+                <p>
+                    <span style="font-weight: bold; color: black;"><?php
+            $difference = 150000 - $bike->getDeposit();
+            echo $difference;
+        ?></span> (Returns:
+                    <span style="color: red;">150000</span> -
+                    <span style="color: #008000;"><?php echo $bike->getDeposit(); ?></span>)
+                </p>
+
+                <input type="hidden" name="difference" value="<?php echo $difference; ?>">
+                <input type="hidden" name="cardOwner" placeholder="Card Owner" value="<?php echo $card->getCardOwner(); ?>">
+                <button type="submit" class="confirm-button">CONFIRM</button>
             </div>
         </div>
-        <div class="invoice-section payment-section">
+        <div class="invoice-section ">
             <h1 style="color: #6699CC;">PAYMENT CARD</h1>
             <div class="normal-label">Card Owner</div>
-            <input type="text" placeholder="Card Owner" value="<?php echo $card->getCardOwner();
-                                                                ?>">
+            <input type="text" name="card_owner" placeholder="Card Owner" value="<?php echo $card->getCardOwner(); ?>">
             <div class="normal-label">Card Number</div>
-            <input type="text" placeholder="Card Number" value="<?php echo $card->getCardNum();
-                                                                ?>">
+            <input type="text" name="card_number" placeholder="Card Number" value="<?php echo $card->getCardNum(); ?>">
             <div class="normal-label">EXP Date</div>
-            <input type="text" placeholder="EXP Date" value="<?php echo $card->getExpDate();
-                                                                ?>">
+            <input type="text" name="expDate" placeholder="EXP Date" value="<?php echo $card->getExpDate(); ?>">
             <div class="normal-label">Security Code</div>
-            <input type="password" placeholder="Security Code" value="<?php echo $card->getSecurityCode();
-                                                                        ?>">
+            <input type="password" name="security_code" placeholder="Security Code" value="<?php echo $card->getSecurityCode(); ?>">
             <br>
-            <input type="checkbox" id="useDifferentCard">
+            <input type="checkbox" id="useDifferentCard" name="use_different_card">
             <label class="normal-label" for="useDifferentCard">USE DIFFERENT CARD TO RETURN MONEY</label>
         </div>
     </div>
+</form>
+
 </body>
 
 </html>
