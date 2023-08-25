@@ -5,7 +5,7 @@
 class PaymentTransaction {
 
     private $errorCode;
-    private  CreditCard $card;
+    private CreditCard $card;
     private $transactionId;
     private $transactionContent;
     private $amount;
